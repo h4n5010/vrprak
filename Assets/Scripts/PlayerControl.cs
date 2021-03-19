@@ -6,6 +6,7 @@ public class PlayerControl : MonoBehaviour
 {
     private Rigidbody rb;
     public float speed;
+    public bool keyboard;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +18,12 @@ public class PlayerControl : MonoBehaviour
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
         float moveVertical = Input.GetAxis("Vertical");
+        if (keyboard)
+        {
+       
+            rb.AddForce(moveHorizontal * speed, 0, moveVertical * speed, ForceMode.Force);
 
-        rb.AddForce(moveHorizontal * speed, 0, moveVertical * speed, ForceMode.Force);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
