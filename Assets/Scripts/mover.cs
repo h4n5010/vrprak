@@ -6,12 +6,12 @@ public class mover : MonoBehaviour
 {
     public Vector3 Velocity = new Vector3(1, 0, 0);
 
-    [Range(0, 5)]
-    public float RotateSpeed = 1f;
-    [Range(0, 5)]
-    public float RotateRadiusX = 1f;
-    [Range(0, 5)]
-    public float RotateRadiusY = 1f;
+   
+    public float RotateSpeed = 0.001f;
+
+    public float RotateRadiusX = 0.001f;
+
+    public float RotateRadiusY = 0.001f;
 
     public bool Clockwise = true;
 
@@ -23,16 +23,16 @@ public class mover : MonoBehaviour
         _centre = transform.position;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _centre += Velocity * Time.deltaTime;
+        _centre += Velocity * Time.deltaTime/10;
 
-        _angle += (Clockwise ? RotateSpeed : -RotateSpeed) * Time.deltaTime;
+        _angle += (Clockwise ? RotateSpeed : -RotateSpeed) * Time.deltaTime/10;
 
         var x = Mathf.Sin(_angle) * RotateRadiusX;
         var y = Mathf.Cos(_angle) * RotateRadiusY;
 
-        //transform.position = _centre + new Vector3(x, y, 0);
+        //transform.position = _centre + new Vector3(x, y,0);
     }
 
     

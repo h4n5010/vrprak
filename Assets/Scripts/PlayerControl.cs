@@ -46,7 +46,8 @@ public class PlayerControl : MonoBehaviour
                 scoreboard.GetComponent<UnityEngine.UI.Text>().text = "Gewonnen!";
 
             }
-        } else if (other.gameObject.CompareTag("Enemy"))
+        }
+        if (other.gameObject.CompareTag("Enemy"))
         {
             scoreboard.GetComponent<UnityEngine.UI.Text>().text = "Veloren!";
             rb.constraints = RigidbodyConstraints.FreezeAll;
