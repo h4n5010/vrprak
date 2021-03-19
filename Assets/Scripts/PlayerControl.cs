@@ -5,13 +5,17 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     private Rigidbody rb;
+    public GameObject scoreboard;
     public float speed;
     public bool keyboard;
+    private int score;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        score = 0;
+        scoreboard.GetComponent<UnityEngine.UI.Text>().text = "Score: " + score.ToString();
     }
 
     void FixedUpdate()
@@ -31,6 +35,22 @@ public class PlayerControl : MonoBehaviour
         if(other.gameObject.CompareTag("PickUp"))
         {
             other.gameObject.SetActive(false);
+            score++;
+            if (score != 11)
+            {
+                scoreboard.GetComponent<UnityEngine.UI.Text>().text = "Score: " + score.ToString();
+
+            }
+            else
+            {
+                scoreboard.GetComponent<UnityEngine.UI.Text>().text = "Gewonnen!";
+
+            }
+        } else if (other.gameObject.CompareTag("Enemy"))
+        {
+            scoreboard.GetComponent<UnityEngine.UI.Text>().text = "Veloren!";
+            rb.constraints = RigidbodyConstraints.FreezeAll;
         }
+
     }
 }
