@@ -7,6 +7,7 @@ public class FlyJoystick : MonoBehaviour
     public float speed;
     public float speedAmplifier;
     public float roationSpeed;
+    public Rigidbody projectile;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,5 +25,12 @@ public class FlyJoystick : MonoBehaviour
         this.transform.Rotate(rotation * Time.deltaTime * roationSpeed);
         speed = inputThrottle * speedAmplifier;
         this.transform.Translate(0, 0, speed);
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Debug.Log("FIRE");
+            Rigidbody bullet = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
+
+            bullet.velocity =  500 * transform.forward; ;
+        }
     }
 }
