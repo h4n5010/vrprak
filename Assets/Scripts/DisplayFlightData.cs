@@ -22,7 +22,7 @@ public class DisplayFlightData : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float height = player.transform.position.y - (float)1.57;
+        float height = player.transform.position.y - (float)1.57 + 22.28f;
         textHeight.text = "Alt: " + height.ToString("F2") + "m";
         textSpeed.text = "Speed: " + (300 * flyJoystick.speed).ToString("F2") + " km/h";
         if (height < warningHeight)
