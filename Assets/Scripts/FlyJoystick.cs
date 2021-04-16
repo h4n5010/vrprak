@@ -8,6 +8,7 @@ public class FlyJoystick : MonoBehaviour
     public float speedAmplifier;
     public float roationSpeed;
     public Rigidbody projectile;
+    public bool enabled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +29,14 @@ public class FlyJoystick : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Debug.Log("FIRE");
-            Rigidbody bullet = Instantiate(projectile, transform.position, transform.rotation) as Rigidbody;
+            if (enabled)
+            {
+                Vector3 position = transform.position + new Vector3(3.18f, 22.02f, 0.39f);
+                Rigidbody bullet = Instantiate(projectile, position, transform.rotation) as Rigidbody;
 
-            bullet.velocity =  500 * transform.forward; ;
+                bullet.velocity = 500 * transform.forward;
+            }
+           
         }
     }
 }
