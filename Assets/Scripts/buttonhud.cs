@@ -6,7 +6,7 @@ public class buttonhud : MonoBehaviour
 {
     public AudioClip click;
     public GameObject hud;
-    private bool enabled = true;
+    private bool enabled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,13 +25,13 @@ public class buttonhud : MonoBehaviour
         enabled = !enabled;
         if (!enabled)
         {
-            this.transform.position += new Vector3(0, 0.1f, 0);
+            this.transform.position += this.transform.up * 0.1f;
             hud.SetActive(false);
             AudioSource.PlayClipAtPoint(click, transform.position, 1);
         }
         else
         {
-            this.transform.position += new Vector3(0, -0.1f, 0);
+            this.transform.position += this.transform.up * -0.1f;
             hud.SetActive(true);
             AudioSource.PlayClipAtPoint(click, transform.position, 1);
         }

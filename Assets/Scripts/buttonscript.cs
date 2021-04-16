@@ -6,11 +6,12 @@ public class buttonscript : MonoBehaviour
 {
 
     public AudioClip click;
-    private bool enabled = false;
+    private bool enabled = true;
     public FlyJoystick joystick;
     // Start is called before the first frame update
     void Start()
     {
+        joystick.enabled = true;
     }
 
     // Update is called once per frame
@@ -26,11 +27,11 @@ public class buttonscript : MonoBehaviour
         joystick.enabled = enabled;
         if (!enabled)
         {
-            this.transform.position += new Vector3(0.1f, 0, 0);
+            this.transform.position += this.transform.up * 0.1f;
             AudioSource.PlayClipAtPoint(click, transform.position, 1);
         } else
         {
-            this.transform.position += new Vector3(-0.1f, 0, 0);
+            this.transform.position += this.transform.up * -0.1f;
             AudioSource.PlayClipAtPoint(click, transform.position, 1);
         }
     }
