@@ -6,12 +6,12 @@ public class buttonscript : MonoBehaviour
 {
 
     public AudioClip click;
-    private bool enabled = true;
+    private bool enabled = false;
     public FlyJoystick joystick;
     // Start is called before the first frame update
     void Start()
     {
-        joystick.enabled = true;
+        joystick.enabled = false;
     }
 
     // Update is called once per frame
